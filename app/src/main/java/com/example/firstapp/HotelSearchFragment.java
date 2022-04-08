@@ -53,10 +53,11 @@ public class HotelSearchFragment extends Fragment {
         mainLayout =view.findViewById(R.id.main_layout) ;
         titleTextView = view.findViewById(R.id.title_text_view);
         guestsCountEditText = view.findViewById(R.id.guests_count_edit_text);
+        searchTextConfirmationTextView = view.findViewById(R.id.search_confirm_text_view);
 
-        //For Shared Pref Demo
+        //For Shared Pref
         nameEditText = view.findViewById(R.id.name_edit_text);
-      //  retrieveButton = view.findViewById(R.id.retrieve_button);
+        retrieveButton = view.findViewById(R.id.retrieve_button);
         clearButton = view.findViewById(R.id.clear_button);
 
         confirmSearchButton = view.findViewById(R.id.confirm_my_search_button);
@@ -64,19 +65,20 @@ public class HotelSearchFragment extends Fragment {
 
         checkInDatePicker = view.findViewById(R.id.check_in_date_picker_view);
         checkOutDatePicker = view.findViewById(R.id.check_out_date_picker_view);
-        // set title text
+
+        //title text
         titleTextView.setText(R.string.welcome_text);
 
-        //Set up the text of confirm text box
+        // confirm text click listener
         confirmSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 checkInDate = getDateFromCalender(checkInDatePicker);
                 checkOutDate = getDateFromCalender(checkOutDatePicker);
 
-                //Get input of guests count
+                //Get input
                 guestCount = guestsCountEditText.getText().toString();
-                guestName = nameEditText.getText().toString();
+                guestName= nameEditText.getText().toString();
 
 
                 // Saving into shared preferences
@@ -85,7 +87,6 @@ public class HotelSearchFragment extends Fragment {
                 editor.putString(name, guestName);
                 editor.putString(count, guestCount);
                 editor.commit();
-
 
 
                 searchTextConfirmationTextView.setText("Dear "+ guestName +", Your check in date is " + checkInDate + " and " +
@@ -102,7 +103,7 @@ public class HotelSearchFragment extends Fragment {
                 checkInDate = getDateFromCalender(checkInDatePicker);
                 checkOutDate = getDateFromCalender(checkOutDatePicker);
 
-                //Get input of guests count
+                //Get input
                 guestCount = guestsCountEditText.getText().toString();
                 guestName= nameEditText.getText().toString();
 
@@ -144,7 +145,7 @@ public class HotelSearchFragment extends Fragment {
         Calendar calender = Calendar.getInstance();
 
         calender.set(year,month,day);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return simpleDateFormat.format(calender.getTime());
 
         }

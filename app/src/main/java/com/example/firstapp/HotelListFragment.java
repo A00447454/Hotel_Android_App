@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.common.api.Api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,17 +50,14 @@ public class HotelListFragment extends Fragment implements ItemClickListener {
         String guestName = getArguments().getString("name of guest");
 
         //Set up the header
-        headingTextView.setText("Welcome "+ guestName +", displaying hotel for " + guestCount + " guests staying from " + checkInDate +
-                " to " + checkOutDate);
-         //Set up the RecyclerView
-        ArrayList<HotelListData> hotelListData = initHotelListData();
-        RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), hotelListData);
-        recyclerView.setAdapter(hotelListAdapter);
-      //  getHotelsListsData();
-
-
+        headingTextView.setText(new StringBuilder().append("Welcome ").append(guestName).append(", displaying hotel for ").append(guestCount).append(" guests staying from ").append(checkInDate).append(" to ").append(checkOutDate).toString());
+//         //Set up the RecyclerView
+//        ArrayList<HotelListData> hotelListData = initHotelListData();
+//        RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), hotelListData);
+//        recyclerView.setAdapter(hotelListAdapter);
+            getHotelListData();
 
     }
     public ArrayList<HotelListData> initHotelListData() {
@@ -85,17 +79,46 @@ public class HotelListFragment extends Fragment implements ItemClickListener {
         return list;
     }
 
+    private void getHotelListData() {
+        progressBar.setVisibility(View.VISIBLE);
+        Api.getClient().getHotelsList(new Callback<HotelList>() {
+            @Override
+            public void success(HotelList hotelList, Response response) {
+                userListResponseData = hotelList.getHotelListDataList();
+                setupRecyclerView();
+            }
 
-//    private void setupRecyclerView() {
-//        progressBar.setVisibility(View.GONE);
-//        RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), userListResponseData);
-//        recyclerView.setAdapter(hotelListAdapter);
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+//        com.example.firstapp.Api.getClient().getHotelsList(new Callback<List<HotelListData>>() {
+//            @Override
+//            public void success(List<HotelListData> hotelListData, Response response) {
+//                userListResponseData = userListResponseData;
 //
-//        //Bind the click listener
-//        hotelListAdapter.setClickListener(this);
-//    }
+//                setupRecyclerView();
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
+    }
+
+    private void setupRecyclerView() {
+        progressBar.setVisibility(View.GONE);
+        RecyclerView recyclerView = view.findViewById(R.id.hotel_list_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        HotelListAdapter hotelListAdapter = new HotelListAdapter(getActivity(), userListResponseData);
+        recyclerView.setAdapter(hotelListAdapter);
+
+        //Bind the click listener
+        hotelListAdapter.setClickListener(this);
+    }
 
 
     @Override
@@ -111,12 +134,12 @@ public class HotelListFragment extends Fragment implements ItemClickListener {
         bundle.putString("hotel price", price);
         bundle.putString("hotel availability", availability);
 
-        HotelGuestDetailsFragment hotelGuestDetailsFragment = new HotelGuestDetailsFragment();
-        hotelGuestDetailsFragment.setArguments(bundle);
+        GuestDetailsFragment GuestDetailsFragment = new GuestDetailsFragment();
+        GuestDetailsFragment.setArguments(bundle);
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.remove(HotelListFragment.this);
-        fragmentTransaction.replace(R.id.main_layout, hotelGuestDetailsFragment);
+        fragmentTransaction.replace(R.id.main_layout, GuestDetailsFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commitAllowingStateLoss();
 

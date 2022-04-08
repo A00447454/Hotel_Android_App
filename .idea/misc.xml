@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/hotel_guest_details_fragment.xml" value="0.2231722958529286" />
+        <entry key="app/src/main/res/layout/hotel_guest_details_fragment.xml" value="0.16280822753906252" />
+        <entry key="app/src/main/res/layout/hotel_guest_list_layout.xml" value="0.10688328345446772" />
         <entry key="app/src/main/res/layout/hotel_list_fragment.xml" value="0.2231722958529286" />
-        <entry key="app/src/main/res/layout/hotel_list_layout.xml" value="0.2231722958529286" />
+        <entry key="app/src/main/res/layout/hotel_list_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/hotel_search_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/hotel_selected_layout.xml" value="0.16361546118884274" />
       </map>
     </option>
   </component>

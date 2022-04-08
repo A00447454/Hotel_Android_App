@@ -20,7 +20,6 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
 
-    //Data gets passed in the constructor
     HotelListAdapter(Context context, List<HotelListData> hotelListData) {
         this.layoutInflater = LayoutInflater.from(context);
         this.hotelListData = hotelListData;
