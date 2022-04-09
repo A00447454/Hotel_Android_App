@@ -15,6 +15,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     private LayoutInflater layoutInflater;
     int guestCount;
+    TextView GuestNoTextView;
 
     GuestListAdapter(Context context, int guestCount) {
         this.layoutInflater = LayoutInflater.from(context);
@@ -30,6 +31,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.GuestNoTextView.setText("Guest "+ (position + 1));
 //        String hotelName = hotelListData.get(position).getHotel_name();
 //        String hotelPrice = hotelListData.get(position).getPrice();
 //        String hotelAvailability = hotelListData.get(position).getAvailability();
@@ -48,10 +50,11 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView hotelName, hotelPrice, hotelAvailability;
+        TextView GuestNoTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            GuestNoTextView = itemView.findViewById(R.id.guest_no_text_view);
 //            hotelName = itemView.findViewById(R.id.hotel_name_text_view);
 //            hotelPrice = itemView.findViewById(R.id.price_text_view);
 //            hotelAvailability = itemView.findViewById(R.id.availability_text_view);

@@ -33,6 +33,7 @@ public class GuestDetailsFragment extends Fragment {
     RadioButton radioButton;
     Button bookButton;
 
+
     View view;
 
     ProgressBar progressBar;
@@ -54,6 +55,7 @@ public class GuestDetailsFragment extends Fragment {
         TextView checkInTextView = view.findViewById(R.id.check_in_text_view);
         TextView checkOutTextView = view.findViewById(R.id.check_out_text_view);
         TextView priceTextView = view.findViewById(R.id.price_text_view);
+        TextView hotelNameTextView =  view.findViewById(R.id.hotel_name_text_view);
 
         String hotelName = getArguments().getString("hotel name");
         String hotelPrice = getArguments().getString("hotel price");
@@ -64,13 +66,14 @@ public class GuestDetailsFragment extends Fragment {
         String guestCount =getArguments().getString("number of guests");
         int noOfGuest = Integer.valueOf(guestCount);
 
+        hotelNameTextView.setText(hotelName);
         checkInTextView.setText(checkInDate);
         checkOutTextView.setText(checkOutDate);
         priceTextView.setText("$ "+hotelPrice);
 
 
 
-        hotelRecapTextView.setText(hotelName+ " availability is: " +hotelAvailability+". The cost will be $ "+hotelPrice);
+        hotelRecapTextView.setText(hotelName+ " availability is: " +hotelAvailability);
         setupRecyclerView(Integer.valueOf(guestCount));
 
         RecyclerView guestDetailsRecyclerView = view.findViewById(R.id.guest_list_recycler_view);
