@@ -27,6 +27,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/teal_700"
+
+
                 />
             <TextView
                 android:id="@+id/check_in_text_view"
@@ -39,6 +42,8 @@
                 android:layout_marginStart="20dp"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:textColor="@color/teal_700"
+
                  />
 
             <DatePicker
@@ -60,6 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@id/check_in_date_picker_view"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:textColor="@color/teal_700"
                 />
             <DatePicker
                 android:id="@+id/check_out_date_picker_view"
@@ -81,6 +87,7 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/check_out_date_picker_view"
+                android:textColor="@color/teal_700"
                 />
 
             <EditText
@@ -106,6 +113,7 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name_text_view"
+                android:textColor="@color/teal_700"
                 />
 
             <EditText

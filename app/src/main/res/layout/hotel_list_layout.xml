@@ -21,7 +21,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="Hotel Name"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -32,6 +33,7 @@
             app:layout_constraintStart_toStartOf="@id/hotel_name_text_view"
             android:text="Price"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -45,6 +47,7 @@
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:textColor="@color/black"/>
 
 

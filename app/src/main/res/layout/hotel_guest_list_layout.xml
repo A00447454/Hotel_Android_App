@@ -23,26 +23,39 @@
             android:text="Guest Name"
             android:textSize="20sp"
             android:textColor="@color/black"/>
+
         <EditText
-            android:id="@+id/guest_names_edit_text"
+            android:id="@+id/guest_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:hint="Guest name"
             app:layout_constraintStart_toEndOf="@+id/guest_names_text_view"
             app:layout_constraintTop_toTopOf="@+id/guest_names_text_view"
-            app:layout_constraintBottom_toBottomOf="@id/guest_names_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:hint="Guest Name"
+            app:layout_constraintBottom_toBottomOf="@+id/guest_names_text_view"
+            android:layout_marginStart="30sp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/gender_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/guest_names_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/guest_names_text_view"
+            android:textColor="@color/black"
             />
 
         <RadioGroup
-            android:layout_marginTop="20dp"
             android:id="@+id/group_radio"
             android:layout_marginLeft="10dp"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/guest_names_text_view"
+            app:layout_constraintTop_toTopOf="@+id/gender_text_view"
+            app:layout_constraintStart_toStartOf="@+id/guest_name_edit_text"
             >
 
             <RadioButton
@@ -50,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/radio_id1"
                 android:text="Male"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -58,7 +71,7 @@
                 android:id="@+id/radio_id2"
                 android:layout_marginLeft="50dp"
                 android:text="Female"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
         </RadioGroup>
 

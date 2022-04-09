@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -107,11 +108,19 @@ public class HotelSearchFragment extends Fragment {
                 guestCount = guestsCountEditText.getText().toString();
                 guestName= nameEditText.getText().toString();
 
+                try{
+                    Integer.valueOf(guestCount);
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "Please enter a number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Bundle bundle = new Bundle();
                 bundle.putString("check in date", checkInDate);
                 bundle.putString("check out date", checkOutDate);
                 bundle.putString ("number of guests", guestCount);
                 bundle.putString("name of guest", guestName);
+
 
                 // set Fragment class Arguments
                 HotelListFragment hotelsListFragment = new HotelListFragment();

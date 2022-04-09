@@ -93,20 +93,7 @@ public class HotelListFragment extends Fragment implements ItemClickListener {
 
             }
         });
-//        com.example.firstapp.Api.getClient().getHotelsList(new Callback<List<HotelListData>>() {
-//            @Override
-//            public void success(List<HotelListData> hotelListData, Response response) {
-//                userListResponseData = userListResponseData;
-//
-//                setupRecyclerView();
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
+
     }
 
     private void setupRecyclerView() {
@@ -128,11 +115,19 @@ public class HotelListFragment extends Fragment implements ItemClickListener {
         String hotelName = hotelListData.getHotel_name();
         String price = hotelListData.getPrice();
         String availability = hotelListData.getAvailability();
+        String checkInDate = getArguments().getString("check in date");
+        String checkOutDate = getArguments().getString("check out date");
+        String guestCount = getArguments().getString("number of guests");
+        String guestName = getArguments().getString("name of guest");
 
         Bundle bundle = new Bundle();
         bundle.putString("hotel name", hotelName);
         bundle.putString("hotel price", price);
         bundle.putString("hotel availability", availability);
+        bundle.putString("check in date", checkInDate);
+        bundle.putString("check out date", checkOutDate);
+        bundle.putString ("number of guests", guestCount);
+        bundle.putString("name of guest", guestName);
 
         GuestDetailsFragment GuestDetailsFragment = new GuestDetailsFragment();
         GuestDetailsFragment.setArguments(bundle);
